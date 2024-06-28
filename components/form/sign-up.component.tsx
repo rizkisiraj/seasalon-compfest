@@ -17,7 +17,7 @@ import Link from 'next/link';
 
 const FormSchema = z
   .object({
-    username: z.string().min(1, 'Username is required').max(100),
+    name: z.string().min(1, 'Username is required').max(100),
     email: z.string().min(1, 'Email is required').email('Invalid email'),
     password: z
       .string()
@@ -34,7 +34,7 @@ const SignUpForm = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      username: '',
+      name: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -56,7 +56,7 @@ const SignUpForm = () => {
               <FormItem>
                 <FormLabel>Username</FormLabel>
                 <FormControl>
-                  <Input placeholder='johndoe' {...field} />
+                  <Input placeholder='John Doe' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
