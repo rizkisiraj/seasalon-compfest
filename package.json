@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:postgres": "dotenv -e .env.local -- npx prisma migrate dev --name init"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
@@ -16,6 +17,7 @@
     "bcrypt": "^5.1.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "dotenv-cli": "^7.4.2",
     "lucide-react": "^0.397.0",
     "next": "14.2.4",
     "next-auth": "^4.24.7",
