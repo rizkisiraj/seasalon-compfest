@@ -1,28 +1,27 @@
 import { db } from "@/lib/db"
 import { NextResponse } from "next/server"
-import { ZodError, z } from "zod"
+import { z } from "zod"
 
-const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;
 const BranchSchema = z
   .object({
     name: z.string().min(1, 'Name is required').max(255),
-    openingHour: z.string().refine((val) => timePattern.test(val), {
-        message: "Invalid time format, expected 'HH:MM'",
-    }),
-    closingHour: z.string().refine((val) => timePattern.test(val), {
-        message: "Invalid time format, expected 'HH:MM'",
-    })
+    activePhoneNumber: z.string().min(10, 'Phone number should be at least 10 digits').max(13),
+    serviceId: z.string(),
+    userId: z.string(),
+    reservationDate: z.date(),
+    startTime: z.date(),
+    endTime: z.date(),
   })
 
 export async function POST(req: Request) {
     try {
         const body = await req.json()
-        const { name, openingHour, closingHour } = BranchSchema.parse(body)
+        const { name, activePhoneNumber, serviceId, userId, reservationDate, startTime, endTime } = BranchSchema.parse(body)
 
-        const newBranch = await db.branch.create({
+        const newBranch = await db.reservation.create({
             data: {
                 name: name,
-                openingHour: openingHour,
+                activePhoneNumber: activePhoneNumber,
                 closingHour: closingHour
             }
         })
