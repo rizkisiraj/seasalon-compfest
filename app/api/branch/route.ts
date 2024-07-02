@@ -1,6 +1,6 @@
 import { db } from "@/lib/db"
 import { NextResponse } from "next/server"
-import { ZodError, z } from "zod"
+import { z } from "zod"
 
 const timePattern = /^([01]\d|2[0-3]):([0-5]\d)$/;
 const BranchSchema = z
@@ -12,7 +12,7 @@ const BranchSchema = z
     closingHour: z.string().refine((val) => timePattern.test(val), {
         message: "Invalid time format, expected 'HH:MM'",
     })
-  })
+})
 
 export async function POST(req: Request) {
     try {
@@ -30,5 +30,15 @@ export async function POST(req: Request) {
 
     } catch(error: any) {
         return NextResponse.json({message: error.issues}, {status: 500})
+    }
+}
+
+export async function GET(req: Request) {
+    try {
+        const branches = await db.branch.findMany();
+        console.log(branches)
+        return NextResponse.json({branches: branches, message: "Branch select successfull"})
+    } catch(error: any) {
+        return NextResponse.json({message: error}, {status: 500})
     }
 }
