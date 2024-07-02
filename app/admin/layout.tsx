@@ -1,6 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
-import { TooltipProvider } from "@radix-ui/react-tooltip";
+import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip";
 import { BarChart, Building, Building2, Home, Scissors } from "lucide-react";
 import Link from "next/link";
 
