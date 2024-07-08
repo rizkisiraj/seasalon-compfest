@@ -16,7 +16,7 @@ const AuthLayout: FC<AdminLayoutProps> = ({ children }) => {
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Link
-                            href="#"
+                            href="/admin/dashboard"
                             className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                         >
                             <BarChart className="h-5 w-5" />
@@ -28,7 +28,7 @@ const AuthLayout: FC<AdminLayoutProps> = ({ children }) => {
                 <Tooltip>
                     <TooltipTrigger asChild>
                         <Link
-                            href="#"
+                            href="/admin/branch"
                             className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
                         >
                             <Building2 className="h-5 w-5" />

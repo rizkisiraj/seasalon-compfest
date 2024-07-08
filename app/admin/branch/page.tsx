@@ -1,11 +1,14 @@
+
+
 import BranchAddButton from "@/components/branch-add-button";
 import BranchCard from "@/components/branch-card";
+import { DialogCloseButton } from "@/components/dialog-close-button";
 import { Breadcrumb, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator, BreadcrumbPage } from "@/components/ui/breadcrumb"
 import Link from "next/link";
 
 
 export default async function BranchHomepage() {
-    const res = await fetch("http://localhost:3000/api/branch");
+    const res = await fetch("http://localhost:3000/api/branch",{ cache: "no-store" });
     const { branches } = await res.json();
         
     return (
@@ -21,7 +24,7 @@ export default async function BranchHomepage() {
                         )
                     })
                 }
-                <BranchAddButton />
+                <DialogCloseButton />
             </section>
         </>
     )

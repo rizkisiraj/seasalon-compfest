@@ -13,8 +13,8 @@ export default function Header() {
             <a href="/" className="pr-12 text-xl text-black">
               Services
             </a>
-            <a href="/" className="pr-12 text-xl text-black">
-              Contact Details
+            <a href="/admin/dashboard" className="pr-12 text-xl text-black">
+              admin
             </a>
           </div>
         </div>
@@ -22,7 +22,7 @@ export default function Header() {
           <div className="hidden py-1 text-right xl:inline-block">
             <a
               className="mt-2 inline-flex items-center px-12 py-3 text-lg font-semibold tracking-tighter text-black"
-              href="/"
+              href="/sign-in"
             >
               Log in
             </a>

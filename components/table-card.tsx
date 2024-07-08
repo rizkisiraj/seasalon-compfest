@@ -1,4 +1,4 @@
-import { Badge } from "@/components/ui/badge"
+
 import {
   Card,
   CardContent,
@@ -17,7 +17,7 @@ import {
 import { Button } from "./ui/button"
 import { ReactNode } from "react"
 
-export default function TableCard({ type }: { type: String }) {
+export default function TableCard({ type, data }: { type: string, data: any[] }) {
   return (
     <Card>
       <CardHeader className="px-7">
@@ -45,12 +45,18 @@ export default function TableCard({ type }: { type: String }) {
                         </TableRow>
                     </TableHeader>
                     <TableBody>
-                        <TableRow className="bg-accent">
-                        <TableCell>
-                            <p className="font-medium">Service 1</p>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">2 Hours</TableCell>
-                        </TableRow>
+                      {
+                        data.length > 0 ? data.map((service: any) => {
+                          return (
+                            <TableRow key={service.id} className="bg-accent">
+                              <TableCell>
+                                  {service.name}
+                              </TableCell>
+                              <TableCell className="hidden sm:table-cell">{`${service.duration} hours`}</TableCell>
+                            </TableRow>
+                          )
+                        }) : null
+                      } 
                     </TableBody>
                     </>
                 ) : (
